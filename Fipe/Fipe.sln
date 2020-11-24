@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fipe.Application", "Fipe\Fipe.Application\Fipe.Application.csproj", "{27F0C067-F635-42B4-8BC4-B154A21C70D7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{2E9ACE51-8759-4B27-8236-58A8AF3A0147}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fipe.Data", "Fipe.Data\Fipe.Data.csproj", "{DB99F991-FB9C-4849-9C4F-03D70B656D4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,10 @@ Global
 		{27F0C067-F635-42B4-8BC4-B154A21C70D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27F0C067-F635-42B4-8BC4-B154A21C70D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27F0C067-F635-42B4-8BC4-B154A21C70D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB99F991-FB9C-4849-9C4F-03D70B656D4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB99F991-FB9C-4849-9C4F-03D70B656D4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB99F991-FB9C-4849-9C4F-03D70B656D4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB99F991-FB9C-4849-9C4F-03D70B656D4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{29578F42-AB88-457C-89D7-A406B59B93DE} = {3FD9F3E2-79AE-4992-8EA2-06542EB5F5F3}
 		{27F0C067-F635-42B4-8BC4-B154A21C70D7} = {77CCA813-E1E3-4870-870C-41888608B478}
+		{DB99F991-FB9C-4849-9C4F-03D70B656D4C} = {2E9ACE51-8759-4B27-8236-58A8AF3A0147}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5A1CB83A-B0E9-4F43-9EBC-BD08478954C5}
