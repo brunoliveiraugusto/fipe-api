@@ -8,7 +8,7 @@ namespace Fipe.Application.Services
 {
     public class MarcaAppService : IMarcaAppService
     {
-        public async Task PopularMarcasObtidasApiFipe()
+        public async Task PopularMarcasObtidasApiFipeAsync()
         {
             
         }

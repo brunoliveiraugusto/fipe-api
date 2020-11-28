@@ -21,7 +21,7 @@ namespace Fipe.Api.Controllers
         [Route("PopularMarcasFipe")]
         public async Task PopularMarcasFipe()
         {
-            await _marcaAppService.PopularMarcasObtidasApiFipe();
+            await _marcaAppService.PopularMarcasObtidasApiFipeAsync();
         }
     }
 }

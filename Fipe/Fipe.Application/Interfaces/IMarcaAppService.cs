@@ -7,6 +7,6 @@ namespace Fipe.Application.Interfaces
 {
     public interface IMarcaAppService
     {
-        Task PopularMarcasObtidasApiFipe();
+        Task PopularMarcasObtidasApiFipeAsync();
     }
 }
