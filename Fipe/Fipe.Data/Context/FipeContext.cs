@@ -10,6 +10,8 @@ namespace Fipe.Data.Context
         public FipeContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Parametro> Parametros { get; set; }
+        public DbSet<Marca> Marcas { get; set; }
+        public DbSet<TipoVeiculo> TiposVeiculo { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
