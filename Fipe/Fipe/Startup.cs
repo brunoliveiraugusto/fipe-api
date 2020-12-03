@@ -27,6 +27,7 @@ namespace Fipe
 
             //Repository
             services.AddScoped<IParametroRepository, ParametroRepository>();
+            services.AddScoped<ITipoVeiculoRepository, TipoVeiculoRepository>();
 
             //DataBase
             services.AddScoped<FipeContext>();
