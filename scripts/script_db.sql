@@ -6,7 +6,7 @@ BEGIN
     Valor VARCHAR(200) NOT NULL,
     DataCadastro DATETIME NOT NULL,
 	Ativo BIT NOT NULL,
-	Chave VARCHAR(10) IS NULL
+	Chave VARCHAR(10) NULL,
     PRIMARY KEY (IdParametro),
     );
 END
@@ -49,12 +49,34 @@ IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'TipoVeiculo')
 BEGIN
     CREATE TABLE TipoVeiculo(
     IdTipoVeiculo INT IDENTITY NOT NULL,
-	Descricao VARCHAR(200) NOT NULL,
+	Descricao VARCHAR(50) NOT NULL,
     DataCadastro DATETIME NOT NULL,
-	IdMarca INT NOT NULL,
     PRIMARY KEY (IdTipoVeiculo),
-	FOREIGN KEY (IdMarca) REFERENCES Marca(IdMarca)
     );
+END
+
+GO
+
+IF NOT EXISTS (SELECT * FROM TipoVeiculo WHERE Descricao = 'carro')
+BEGIN
+	INSERT INTO TipoVeiculo(Descricao, DataCadastro)
+	VALUES('carro', GETDATE())
+END
+
+GO
+
+IF NOT EXISTS (SELECT * FROM TipoVeiculo WHERE Descricao = 'moto')
+BEGIN
+	INSERT INTO TipoVeiculo(Descricao, DataCadastro)
+	VALUES('moto', GETDATE())
+END
+
+GO
+
+IF NOT EXISTS (SELECT * FROM TipoVeiculo WHERE Descricao = 'caminhao')
+BEGIN
+	INSERT INTO TipoVeiculo(Descricao, DataCadastro)
+	VALUES('caminhao', GETDATE())
 END
 
 GO
@@ -69,6 +91,9 @@ BEGIN
 	Chave VARCHAR(50) NOT NULL,
 	IdMarcaFipe INT NOT NULL,
 	TipoVeiculo INT NOT NULL,
-    PRIMARY KEY (IdMarca)
+	DataReferencia DATETIME NOT NULL,
+	IdTipoVeiculo INT NOT NULL,
+    PRIMARY KEY (IdMarca),
+	FOREIGN KEY (IdTipoVeiculo) REFERENCES TipoVeiculo(IdTipoVeiculo)
     );
 END
