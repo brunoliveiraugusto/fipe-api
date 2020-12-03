@@ -18,9 +18,9 @@ namespace Fipe.Application.Services
             _marcaAppService = marcaAppService;
         }
 
-        public Task PopularDadosObtidosApiFipeAsync()
+        public async Task PopularDadosObtidosApiFipeAsync()
         {
-            throw new NotImplementedException();
+            await _marcaAppService.PopularMarcasObtidasApiFipeAsync();
         }
     }
 }
