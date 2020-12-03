@@ -24,6 +24,6 @@ namespace Fipe.Integration.ModelsRequest
         public int IdMarcaFipe { get; set; }
 
         [JsonIgnore]
-        public int TipoVeiculo { get; set; }
+        public int IdTipoVeiculo { get; set; }
     }
 }
