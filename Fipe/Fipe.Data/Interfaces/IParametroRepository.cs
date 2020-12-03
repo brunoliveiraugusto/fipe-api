@@ -10,6 +10,7 @@ namespace Fipe.Data.Interfaces
     {
         Task<Parametro> ObterParametroPorDescricaoAsync(string descricao);
         Task<string> ObterValorParametroPorDescricaoAsync(string descricao);
-        Task<IEnumerable<string>> ObterValorParametroExpressionAsync(Expression<Func<Parametro, bool>> expression);
+        Task<IEnumerable<string>> ObterValorParametroAsync(Expression<Func<Parametro, bool>> expression);
+        Task<IEnumerable<Parametro>> ObterParametrosAsync(Expression<Func<Parametro, bool>> expression);
     }
 }

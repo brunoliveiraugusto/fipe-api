@@ -30,9 +30,14 @@ namespace Fipe.Data.Repository
             return await _context.Parametros.Where(parametro => parametro.NomeParametro == descricao).Select(valor => valor.Valor).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<string>> ObterValorParametroExpressionAsync(Expression<Func<Parametro, bool>> expression)
+        public async Task<IEnumerable<string>> ObterValorParametroAsync(Expression<Func<Parametro, bool>> expression)
         {
             return await _context.Parametros.Where(expression).Select(valor => valor.Valor).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Parametro>> ObterParametrosAsync(Expression<Func<Parametro, bool>> expression)
+        {
+            return await _context.Parametros.Where(expression).ToListAsync();
         }
     }
 }
