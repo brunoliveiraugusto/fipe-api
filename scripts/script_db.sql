@@ -6,7 +6,6 @@ BEGIN
     Valor VARCHAR(200) NOT NULL,
     DataCadastro DATETIME NOT NULL,
 	Ativo BIT NOT NULL,
-	Chave VARCHAR(10) NULL,
     PRIMARY KEY (IdParametro),
     );
 END
@@ -15,32 +14,32 @@ GO
 
 IF NOT EXISTS (SELECT * FROM Parametro WHERE NomeParametro = 'BaseEndPointFipe')
 BEGIN
-	INSERT INTO Parametro(NomeParametro, Valor, DataCadastro, Ativo, Chave)
-	VALUES('BaseEndPointFipe', 'http://fipeapi.appspot.com/api/1/', GETDATE(), 1, NULL)
+	INSERT INTO Parametro(NomeParametro, Valor, DataCadastro, Ativo)
+	VALUES('BaseEndPointFipe', 'http://fipeapi.appspot.com/api/1/', GETDATE(), 1)
 END
 
 GO
 
 IF NOT EXISTS (SELECT * FROM Parametro WHERE NomeParametro = 'EndPointFipeCarro')
 BEGIN
-	INSERT INTO Parametro(NomeParametro, Valor, DataCadastro, Ativo, Chave)
-	VALUES('EndPointFipeCarro', 'carros/marcas.json', GETDATE(), 1, '1')
+	INSERT INTO Parametro(NomeParametro, Valor, DataCadastro, Ativo)
+	VALUES('EndPointFipeCarro', 'carros/marcas.json', GETDATE(), 1)
 END
 
 GO
 
 IF NOT EXISTS (SELECT * FROM Parametro WHERE NomeParametro = 'EndPointFipeMoto')
 BEGIN
-	INSERT INTO Parametro(NomeParametro, Valor, DataCadastro, Ativo, Chave)
-	VALUES('EndPointFipeMoto', 'motos/marcas.json', GETDATE(), 1, '2')
+	INSERT INTO Parametro(NomeParametro, Valor, DataCadastro, Ativo)
+	VALUES('EndPointFipeMoto', 'motos/marcas.json', GETDATE(), 1)
 END
 
 GO
 
 IF NOT EXISTS (SELECT * FROM Parametro WHERE NomeParametro = 'EndPointFipeCaminhao')
 BEGIN
-	INSERT INTO Parametro(NomeParametro, Valor, DataCadastro, Ativo, Chave)
-	VALUES('EndPointFipeCaminhao', 'caminhoes/marcas.json', GETDATE(), 1, '3')
+	INSERT INTO Parametro(NomeParametro, Valor, DataCadastro, Ativo)
+	VALUES('EndPointFipeCaminhao', 'caminhoes/marcas.json', GETDATE(), 1)
 END
 
 GO
@@ -90,7 +89,6 @@ BEGIN
     OrderFipe INT NOT NULL,
 	Chave VARCHAR(50) NOT NULL,
 	IdMarcaFipe INT NOT NULL,
-	TipoVeiculo INT NOT NULL,
 	DataReferencia DATETIME NOT NULL,
 	IdTipoVeiculo INT NOT NULL,
     PRIMARY KEY (IdMarca),
