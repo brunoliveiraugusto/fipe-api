@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Fipe.Application.Interfaces;
 using Fipe.Application.Services;
+using Fipe.Data.Context;
 using Fipe.Data.Interfaces;
 using Fipe.Data.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -26,6 +27,9 @@ namespace Fipe
 
             //Repository
             services.AddScoped<IParametroRepository, ParametroRepository>();
+
+            //DataBase
+            services.AddScoped<FipeContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
