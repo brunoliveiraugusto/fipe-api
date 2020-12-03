@@ -1,4 +1,6 @@
-﻿namespace Fipe.Data.Entities
+﻿using System;
+
+namespace Fipe.Data.Entities
 {
     public class Marca
     {
@@ -8,6 +10,9 @@
         public int OrderFipe { get; set; }
         public string Chave { get; set; }
         public int IdMarcaFipe { get; set; }
-        public int TipoVeiculo { get; set; }
+        public DateTime DataReferencia { get; set; }
+        public int IdTipoVeiculo { get; set; }
+
+        public virtual TipoVeiculo TipoVeiculo { get; set; }
     }
 }
