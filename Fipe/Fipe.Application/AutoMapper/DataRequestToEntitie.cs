@@ -2,8 +2,6 @@
 using Fipe.Data.Entities;
 using Fipe.Integration.ModelsRequest;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Fipe.Application.AutoMapper
 {
@@ -17,11 +15,10 @@ namespace Fipe.Application.AutoMapper
                 .ForMember(dest => dest.OrderFipe, opt => opt.MapFrom(x => x.OrderFipe))
                 .ForMember(dest => dest.Chave, opt => opt.MapFrom(x => x.Chave))
                 .ForMember(dest => dest.IdMarcaFipe, opt => opt.MapFrom(x => x.IdMarcaFipe))
+                .ForMember(dest => dest.IdTipoVeiculo, opt => opt.MapFrom(x => x.IdTipoVeiculo))
                 .ForMember(dest => dest.DataReferencia, opt => opt.MapFrom(x => DateTime.Now))
                 .ForMember(dest => dest.IdMarca, opt => opt.Ignore())
-                .ForMember(dest => dest.IdTipoVeiculo, opt => opt.Ignore())
                 .ForMember(dest => dest.TipoVeiculo, opt => opt.Ignore());
-
         }
     }
 }
