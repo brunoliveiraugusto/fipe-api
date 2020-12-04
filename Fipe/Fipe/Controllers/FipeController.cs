@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Fipe.Api.Controllers
 {
-    [Route("api/fipe")]
+    [Route("api/[controller]")]
     public class FipeController : Controller
     {
         private readonly IFipeAppService _fipe;
