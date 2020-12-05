@@ -10,7 +10,8 @@ namespace Fipe.Data.Entities
         public int OrderFipe { get; set; }
         public string Chave { get; set; }
         public int IdMarcaFipe { get; set; }
-        public DateTime DataReferencia { get; set; }
+        public string MesReferencia { get; set; }
+        public string AnoReferencia { get; set; }
         public int IdTipoVeiculo { get; set; }
 
         public virtual TipoVeiculo TipoVeiculo { get; set; }
