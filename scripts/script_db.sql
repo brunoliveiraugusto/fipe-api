@@ -89,7 +89,8 @@ BEGIN
     OrderFipe INT NOT NULL,
 	Chave VARCHAR(50) NOT NULL,
 	IdMarcaFipe INT NOT NULL,
-	DataReferencia DATETIME NOT NULL,
+	MesReferencia VARCHAR(10) NOT NULL,
+	AnoReferencia VARCHAR(10) NOT NULL,
 	IdTipoVeiculo INT NOT NULL,
     PRIMARY KEY (IdMarca),
 	FOREIGN KEY (IdTipoVeiculo) REFERENCES TipoVeiculo(IdTipoVeiculo)
