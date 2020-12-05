@@ -19,11 +19,19 @@ namespace Fipe
     {
         public IConfiguration Configuration { get; set; }
 
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+
             //AppService
             services.AddScoped<IMarcaAppService, MarcaAppService>();
             services.AddScoped<IFipeAppService, FipeAppService>();
+            services.AddScoped<IVeiculoMarcaAppService, VeiculoMarcaAppService>();
 
             //Request
             services.AddScoped<IMarcaRequest, MarcaRequest>();
@@ -49,10 +57,7 @@ namespace Fipe
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllers();
             });
         }
     }
