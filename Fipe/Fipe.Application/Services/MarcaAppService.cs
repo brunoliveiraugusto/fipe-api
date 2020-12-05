@@ -38,16 +38,14 @@ namespace Fipe.Application.Services
             var parametros = await parametrosTask;
             var tiposVeiculo = await tiposVeiculoTask;
 
-            var dataReferencia = DateTime.Now;
-
             foreach(var parametro in parametros)
             {
                 IEnumerable<MarcaModelRequest> marcas = await _marcaRequest.ObterMarcasFipeApi(urlBaseApiFipe, parametro.Valor);
-                
+                var idTipoVeiculo = tiposVeiculo.FirstOrDefault(tipoVeiculo => tipoVeiculo.Descricao.ToLower().Contains(parametro.NomeParametro.ToLower()) &&
+                                                                        tipoVeiculo.Descricao.ToLower().Contains(parametro.Valor.ToLower())).IdTipoVeiculo;
                 marcas.ToList().ForEach((marca) =>
                 {
-                    marca.IdTipoVeiculo = tiposVeiculo.FirstOrDefault(tipoVeiculo => tipoVeiculo.Descricao.ToLower().Contains(parametro.NomeParametro.ToLower()) && 
-                                                                        tipoVeiculo.Descricao.ToLower().Contains(parametro.Valor.ToLower())).IdTipoVeiculo;
+                    marca.IdTipoVeiculo = idTipoVeiculo;
                 });
 
                 await _marcaRepository.GravarMarcasAsync(Mapper.Map<IEnumerable<Marca>>(marcas));
