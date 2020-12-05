@@ -9,18 +9,25 @@ namespace Fipe.Application.Services
 {
     public class FipeAppService : IFipeAppService
     {
-        private readonly IParametroRepository _parametroRepository;
+        private readonly IVeiculoMarcaAppService _veiculoMarcaAppService;
         private readonly IMarcaAppService _marcaAppService;
 
-        public FipeAppService(IParametroRepository parametroRepository, IMarcaAppService marcaAppService)
+        public FipeAppService(IMarcaAppService marcaAppService, IVeiculoMarcaAppService veiculoMarcaAppService)
         {
-            _parametroRepository = parametroRepository;
             _marcaAppService = marcaAppService;
+            _veiculoMarcaAppService = veiculoMarcaAppService;
         }
 
         public async Task PopularDadosObtidosApiFipeAsync()
         {
-            await _marcaAppService.PopularMarcasObtidasApiFipeAsync();
+            try
+            {
+                await _marcaAppService.PopularMarcasObtidasApiFipeAsync();
+            }
+            catch(Exception)
+            {
+                throw;
+            }
         }
     }
 }

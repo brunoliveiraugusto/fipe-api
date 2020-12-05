@@ -30,25 +30,32 @@ namespace Fipe.Application.Services
 
         public async Task PopularMarcasObtidasApiFipeAsync()
         {
-            Task<string> urlBaseApiFipeTask = _parametroRepository.ObterValorParametroPorDescricaoAsync("BaseEndPointFipe");
-            Task<IEnumerable<Parametro>> parametrosTask = _parametroRepository.ObterParametrosAsync(parametro => parametro.NomeParametro.Contains("EndPointFipe") && parametro.Valor.Contains("/marcas.json"));
-            Task<IEnumerable<TipoVeiculo>> tiposVeiculoTask = _tipoVeiculoRepository.ObterTiposVeiculoAsync();
-
-            var urlBaseApiFipe = await urlBaseApiFipeTask;
-            var parametros = await parametrosTask;
-            var tiposVeiculo = await tiposVeiculoTask;
-
-            foreach(var parametro in parametros)
+            try
             {
-                IEnumerable<MarcaModelRequest> marcas = await _marcaRequest.ObterMarcasFipeApi(urlBaseApiFipe, parametro.Valor);
-                var idTipoVeiculo = tiposVeiculo.FirstOrDefault(tipoVeiculo => tipoVeiculo.Descricao.ToLower().Contains(parametro.NomeParametro.ToLower()) &&
-                                                                        tipoVeiculo.Descricao.ToLower().Contains(parametro.Valor.ToLower())).IdTipoVeiculo;
-                marcas.ToList().ForEach((marca) =>
-                {
-                    marca.IdTipoVeiculo = idTipoVeiculo;
-                });
+                Task<string> urlBaseApiFipeTask = _parametroRepository.ObterValorParametroPorDescricaoAsync("BaseEndPointFipe");
+                Task<IEnumerable<Parametro>> parametrosTask = _parametroRepository.ObterParametrosAsync(parametro => parametro.NomeParametro.Contains("EndPointFipe") && parametro.Valor.Contains("/marcas.json"));
+                Task<IEnumerable<TipoVeiculo>> tiposVeiculoTask = _tipoVeiculoRepository.ObterTiposVeiculoAsync();
 
-                await _marcaRepository.GravarMarcasAsync(Mapper.Map<IEnumerable<Marca>>(marcas));
+                var urlBaseApiFipe = await urlBaseApiFipeTask;
+                var parametros = await parametrosTask;
+                var tiposVeiculo = await tiposVeiculoTask;
+
+                foreach (var parametro in parametros)
+                {
+                    IEnumerable<MarcaModelRequest> marcas = await _marcaRequest.ObterMarcasFipeApi(urlBaseApiFipe, parametro.Valor);
+                    var idTipoVeiculo = tiposVeiculo.FirstOrDefault(tipoVeiculo => tipoVeiculo.Descricao.ToLower().Contains(parametro.NomeParametro.ToLower()) &&
+                                                                            tipoVeiculo.Descricao.ToLower().Contains(parametro.Valor.ToLower())).IdTipoVeiculo;
+                    marcas.ToList().ForEach((marca) =>
+                    {
+                        marca.IdTipoVeiculo = idTipoVeiculo;
+                    });
+
+                    await _marcaRepository.GravarMarcasAsync(Mapper.Map<IEnumerable<Marca>>(marcas));
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
             }
         }
     }
