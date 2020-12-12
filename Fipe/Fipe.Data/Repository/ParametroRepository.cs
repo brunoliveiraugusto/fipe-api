@@ -22,12 +22,12 @@ namespace Fipe.Data.Repository
 
         public async Task<Parametro> ObterParametroPorDescricaoAsync(string descricao)
         {
-            return await _context.Parametros.FirstOrDefaultAsync(parametro => parametro.NomeParametro == descricao);
+            return await _context.Parametros.FirstOrDefaultAsync(parametro => parametro.NomeParametro == descricao && parametro.Ativo);
         }
 
         public async Task<string> ObterValorParametroPorDescricaoAsync(string descricao)
         {
-            return await _context.Parametros.Where(parametro => parametro.NomeParametro == descricao).Select(valor => valor.Valor).FirstOrDefaultAsync();
+            return await _context.Parametros.Where(parametro => parametro.NomeParametro == descricao && parametro.Ativo).Select(valor => valor.Valor).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<string>> ObterValorParametroAsync(Expression<Func<Parametro, bool>> expression)
