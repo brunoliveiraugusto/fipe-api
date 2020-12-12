@@ -1,5 +1,6 @@
 ﻿using Fipe.Data.Entities;
 using Fipe.Data.Interfaces;
+using Fipe.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.IO;
@@ -22,6 +23,13 @@ namespace Fipe.Data.Context
                 .Build();
 
             optionsBuilder.UseSqlServer(config.GetConnectionString("Fipe"));
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new MarcaMap());
+            modelBuilder.ApplyConfiguration(new ParametroMap());
+            modelBuilder.ApplyConfiguration(new TipoVeiculoMap());
         }
     }
 }

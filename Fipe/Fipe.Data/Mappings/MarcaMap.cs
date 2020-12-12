@@ -1,9 +1,6 @@
 ﻿using Fipe.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Fipe.Data.Mappings
 {
@@ -11,7 +8,18 @@ namespace Fipe.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Marca> builder)
         {
-            
+            builder.HasKey(k => k.IdMarca);
+            builder.Property(p => p.IdMarcaFipe);
+            builder.Property(p => p.IdTipoVeiculo);
+            builder.Property(p => p.MesReferencia);
+            builder.Property(p => p.Nome);
+            builder.Property(p => p.NomeFipe);
+            builder.Property(p => p.OrderFipe);
+            builder.Property(p => p.Chave);
+            builder.Property(p => p.AnoReferencia);
+            builder.Ignore(p => p.TipoVeiculo);
+            builder.ToTable("Marca");
+
         }
     }
 }
