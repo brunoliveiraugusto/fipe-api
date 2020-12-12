@@ -1,3 +1,5 @@
+using AutoMapper;
+using Fipe.Application.AutoMapper;
 using Fipe.Application.Interfaces;
 using Fipe.Application.Services;
 using Fipe.Data.Context;
@@ -42,7 +44,17 @@ namespace Fipe
             services.AddScoped<IMarcaRepository, MarcaRepository>();
 
             //DataBase
-            services.AddDbContext<FipeContext>(x => x.UseSqlServer(Configuration.GetConnectionString("Fipe")));
+            services.AddDbContext<FipeContext>(x => x.UseSqlServer(Configuration.GetConnectionString("Fipe")), ServiceLifetime.Transient);
+
+            #region Mapper
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new DataRequestToEntitie());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
