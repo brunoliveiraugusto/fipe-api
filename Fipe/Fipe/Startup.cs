@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Net.Http;
 
 namespace Fipe
 {
@@ -37,6 +38,7 @@ namespace Fipe
 
             //Request
             services.AddScoped<IMarcaRequest, MarcaRequest>();
+            services.AddTransient<HttpClient>();
 
             //Repository
             services.AddScoped<IParametroRepository, ParametroRepository>();
