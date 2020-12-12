@@ -20,7 +20,7 @@ namespace Fipe.Data.Repository
 
         public async Task GravarMarcasAsync(IEnumerable<Marca> marcas)
         {
-            _context.Add(marcas).State = EntityState.Added;
+            _context.AddRange(marcas);
             await _context.SaveChangesAsync();
         }
     }
