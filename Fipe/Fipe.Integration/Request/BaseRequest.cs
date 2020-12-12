@@ -11,11 +11,11 @@ namespace Fipe.Integration.Request
 {
     public class BaseRequest : IRequest
     {
-        private HttpClient _client;
+        private readonly HttpClient _client;
 
-        public BaseRequest()
+        public BaseRequest(HttpClient client)
         {
-            _client = new HttpClient();
+            _client = client;
         }
 
         public virtual async Task<T> GetRequestAsync<T>(string baseUrl, string url) where T : class
@@ -45,7 +45,11 @@ namespace Fipe.Integration.Request
         {
             try
             {
-                _client.BaseAddress = new Uri(baseUrl);
+                if(_client.BaseAddress is null)
+                {
+                    _client.BaseAddress = new Uri(baseUrl);
+                }
+
                 _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage response = await _client.GetAsync(url);
 
