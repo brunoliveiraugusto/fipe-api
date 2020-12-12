@@ -11,5 +11,7 @@ namespace Fipe.Data.Interfaces
         DbSet<Parametro> Parametros { get; set; }
         DbSet<Marca> Marcas { get; set; }
         DbSet<TipoVeiculo> TiposVeiculo { get; set; }
+        DbSet<LogFipe> LogsFipe { get; set; }
+
     }
 }

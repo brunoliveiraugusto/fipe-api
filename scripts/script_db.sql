@@ -96,3 +96,17 @@ BEGIN
 	FOREIGN KEY (IdTipoVeiculo) REFERENCES TipoVeiculo(IdTipoVeiculo)
     );
 END
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'LogFipe')
+BEGIN
+    CREATE TABLE LogFipe(
+    IdLogFipe INT IDENTITY NOT NULL,
+	TipoExcecao VARCHAR(100) NOT NULL,
+    MensagemExcecao VARCHAR(MAX) NOT NULL,
+	StackTrace VARCHAR(MAX) NOT NULL
+    DataExcecao DATETIME NOT NULL,
+    PRIMARY KEY (IdLogFipe)
+    );
+END
