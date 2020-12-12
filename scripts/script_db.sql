@@ -105,7 +105,7 @@ BEGIN
     IdLogFipe INT IDENTITY NOT NULL,
 	TipoExcecao VARCHAR(100) NOT NULL,
     MensagemExcecao VARCHAR(MAX) NOT NULL,
-	StackTrace VARCHAR(MAX) NOT NULL
+	Rastreamento VARCHAR(MAX) NOT NULL,
     DataExcecao DATETIME NOT NULL,
     PRIMARY KEY (IdLogFipe)
     );
