@@ -16,8 +16,8 @@ namespace Fipe.Application.AutoMapper
                 .ForMember(dest => dest.Chave, opt => opt.MapFrom(x => x.Chave))
                 .ForMember(dest => dest.IdMarcaFipe, opt => opt.MapFrom(x => x.IdMarcaFipe))
                 .ForMember(dest => dest.IdTipoVeiculo, opt => opt.MapFrom(x => x.IdTipoVeiculo))
-                .ForMember(dest => dest.MesReferencia, opt => opt.MapFrom(x => DateTime.Now.ToString("MM")))
-                .ForMember(dest => dest.AnoReferencia, opt => opt.MapFrom(x => DateTime.Now.ToString("YYYY")))
+                .ForMember(dest => dest.MesReferencia, opt => opt.MapFrom(x => DateTime.Today.Month))
+                .ForMember(dest => dest.AnoReferencia, opt => opt.MapFrom(x => DateTime.Today.Year))
                 .ForMember(dest => dest.IdMarca, opt => opt.Ignore())
                 .ForMember(dest => dest.TipoVeiculo, opt => opt.Ignore());
         }
