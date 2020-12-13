@@ -1,9 +1,10 @@
-﻿using Fipe.Data.Entities.Interfaces;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Fipe.Data.Entities
+namespace Fipe.Data.Entities.Interfaces
 {
-    public class LogFipe : ILogFipe
+    public interface ILogFipe
     {
         public int IdLogFipe { get; set; }
         public string TipoExcecao { get; set; }
