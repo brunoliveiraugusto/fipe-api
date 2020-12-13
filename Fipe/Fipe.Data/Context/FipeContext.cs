@@ -3,12 +3,21 @@ using Fipe.Data.Interfaces;
 using Fipe.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Fipe.Data.Context
 {
     public class FipeContext : DbContext, IFipeContext
     {
+        private readonly FipeContext _context;
+
+        public FipeContext(FipeContext context)
+        {
+            _context = context;
+        }
+
         public FipeContext(DbContextOptions<FipeContext> options) : base(options) { }
 
         public DbSet<Parametro> Parametros { get; set; }
@@ -32,6 +41,18 @@ namespace Fipe.Data.Context
             modelBuilder.ApplyConfiguration(new ParametroMap());
             modelBuilder.ApplyConfiguration(new TipoVeiculoMap());
             modelBuilder.ApplyConfiguration(new LogFipeMap());
+        }
+
+        public async Task SaveChangesListAsync<T>(IEnumerable<T> list) where T : class
+        {
+            _context.AddRange(list);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task SaveChangesAsync<T>(T obj) where T : class
+        {
+            _context.Add(obj);
+            await _context.SaveChangesAsync();
         }
     }
 }
