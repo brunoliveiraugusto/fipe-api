@@ -1,5 +1,6 @@
 ﻿using Fipe.Data.Context;
 using Fipe.Data.Entities;
+using Fipe.Data.Entities.Interfaces;
 using Fipe.Data.Interfaces;
 using System;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace Fipe.Data.Repository
             _context = context;
         }
 
-        public async Task GravarLog(string tipoExcecao, string mensagemExcecao, string rastreamento, DateTime dataExcecao)
+        public async Task GravarLogAsync(ILogFipe log)
         {
             throw new NotImplementedException();
         }
