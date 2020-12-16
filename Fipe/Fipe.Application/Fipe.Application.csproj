@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fipe.Data\Fipe.Data.csproj" />
+    <ProjectReference Include="..\Fipe.Generics\Fipe.Generics.csproj" />
     <ProjectReference Include="..\Fipe.Integration\Fipe.Integration.csproj" />
   </ItemGroup>
 
