@@ -5,6 +5,8 @@ using Fipe.Application.Services;
 using Fipe.Data.Context;
 using Fipe.Data.Interfaces;
 using Fipe.Data.Repository;
+using Fipe.Generics.Factory;
+using Fipe.Generics.Factory.Interface;
 using Fipe.Integration;
 using Fipe.Integration.Request;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +33,7 @@ namespace Fipe
         {
             services.AddControllers();
 
+            #region DI
             //AppService
             services.AddScoped<IMarcaAppService, MarcaAppService>();
             services.AddScoped<IFipeAppService, FipeAppService>();
@@ -44,9 +47,14 @@ namespace Fipe
             services.AddScoped<IParametroRepository, ParametroRepository>();
             services.AddScoped<ITipoVeiculoRepository, TipoVeiculoRepository>();
             services.AddScoped<IMarcaRepository, MarcaRepository>();
+            services.AddScoped<ILogFipeRepository, LogFipeRepository>();
+
+            //Generics
+            services.AddScoped<IFactory, Factory>();
 
             //DataBase
             services.AddDbContext<FipeContext>(x => x.UseSqlServer(Configuration.GetConnectionString("Fipe")), ServiceLifetime.Transient);
+            #endregion
 
             #region Mapper
             var mappingConfig = new MapperConfiguration(mc =>
