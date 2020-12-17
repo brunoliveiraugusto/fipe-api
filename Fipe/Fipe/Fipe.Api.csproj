@@ -5,11 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Fipe.Application\Fipe.Application.csproj" />
   </ItemGroup>
+
+  <PropertyGroup>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
 
 </Project>

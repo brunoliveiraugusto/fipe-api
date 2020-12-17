@@ -15,6 +15,10 @@ namespace Fipe.Api.Controllers
             _fipe = fipe;
         }
 
+        /// <summary>
+        /// Api para popular no banco de dados os dados trazidos da Fipe.
+        /// </summary>
+        /// <response code="200">Indica que os dados foram registrados com sucesso</response>
         [HttpPost]
         [Route("PopularDadosFipe")]
         public async Task PopularDadosFipe()

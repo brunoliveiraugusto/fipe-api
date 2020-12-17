@@ -16,7 +16,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
+using System.IO;
 using System.Net.Http;
+using System.Reflection;
 
 namespace Fipe
 {
@@ -70,6 +73,10 @@ namespace Fipe
             services.AddSwaggerGen(s =>
             {
                 s.SwaggerDoc("v1", new OpenApiInfo { Title = "Fipe API", Version = "v1" });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                s.IncludeXmlComments(xmlPath);
             });
             #endregion
         }
@@ -89,12 +96,14 @@ namespace Fipe
                 endpoints.MapControllers();
             });
 
+            #region Swagger
             app.UseSwagger();
 
             app.UseSwaggerUI(opt =>
             {
                 opt.SwaggerEndpoint("/swagger/v1/swagger.json", "Fipe API");
             });
+            #endregion
         }
     }
 }
