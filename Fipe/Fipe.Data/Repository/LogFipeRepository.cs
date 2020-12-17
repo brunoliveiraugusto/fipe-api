@@ -18,7 +18,7 @@ namespace Fipe.Data.Repository
 
         public async Task GravarLogAsync(ILogFipe log)
         {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync(log);
         }
     }
 }
