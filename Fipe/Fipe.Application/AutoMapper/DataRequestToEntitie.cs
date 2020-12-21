@@ -20,6 +20,19 @@ namespace Fipe.Application.AutoMapper
                 .ForMember(dest => dest.AnoReferencia, opt => opt.MapFrom(x => DateTime.Today.Year))
                 .ForMember(dest => dest.IdMarca, opt => opt.Ignore())
                 .ForMember(dest => dest.TipoVeiculo, opt => opt.Ignore());
+
+            CreateMap<VeiculoMarcaModelRequest, VeiculoMarca>()
+                .ForMember(dest => dest.Nome, opt => opt.MapFrom(x => x.Nome))
+                .ForMember(dest => dest.Chave, opt => opt.MapFrom(x => x.Chave))
+                .ForMember(dest => dest.FipeMarca, opt => opt.MapFrom(x => x.FipeMarca))
+                .ForMember(dest => dest.FipeMarcaApi, opt => opt.MapFrom(x => x.FipeMarcaApi))
+                .ForMember(dest => dest.FipeNome, opt => opt.MapFrom(x => x.FipeNome))
+                .ForMember(dest => dest.IdFipe, opt => opt.MapFrom(x => x.IdFipe))
+                .ForMember(dest => dest.IdMarca, opt => opt.MapFrom(x => x.IdMarca))
+                .ForMember(dest => dest.MesReferencia, opt => opt.MapFrom(x => DateTime.Today.Month))
+                .ForMember(dest => dest.AnoReferencia, opt => opt.MapFrom(x => DateTime.Today.Year))
+                .ForMember(dest => dest.IdVeiculoMarca, opt => opt.Ignore())
+                .ForMember(dest => dest.Marca, opt => opt.Ignore());
         }
     }
 }
