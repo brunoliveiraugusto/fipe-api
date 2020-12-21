@@ -13,6 +13,7 @@ namespace Fipe.Data.Interfaces
         DbSet<Marca> Marcas { get; set; }
         DbSet<TipoVeiculo> TiposVeiculo { get; set; }
         DbSet<LogFipe> LogsFipe { get; set; }
+        DbSet<VeiculoMarca> VeiculosMarca { get; set; }
 
         Task SaveChangesListAsync<T>(IEnumerable<T> list) where T : class;
         Task SaveChangesAsync<T>(T obj) where T : class;

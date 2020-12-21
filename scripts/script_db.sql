@@ -110,3 +110,23 @@ BEGIN
     PRIMARY KEY (IdLogFipe)
     );
 END
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'VeiculoMarca')
+BEGIN
+    CREATE TABLE VeiculoMarca(
+    IdVeiculoMarca INT IDENTITY NOT NULL,
+	FipeMarca VARCHAR(100) NOT NULL,
+    Nome VARCHAR(100) NOT NULL,
+    FipeMarcaApi VARCHAR(100) NOT NULL,
+	Chave VARCHAR(50) NOT NULL,
+	IdFipe VARCHAR(50) NOT NULL,
+	FipeNome VARCHAR(100) NOT NULL,
+	MesReferencia VARCHAR(10) NOT NULL,
+	AnoReferencia VARCHAR(10) NOT NULL,
+	IdMarca INT NOT NULL,
+    PRIMARY KEY (IdVeiculoMarca),
+	FOREIGN KEY (IdMarca) REFERENCES Marca(IdMarca)
+    );
+END

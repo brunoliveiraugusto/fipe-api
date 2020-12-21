@@ -17,6 +17,7 @@ namespace Fipe.Data.Context
         public DbSet<Marca> Marcas { get; set; }
         public DbSet<TipoVeiculo> TiposVeiculo { get; set; }
         public DbSet<LogFipe> LogsFipe { get; set; }
+        public DbSet<VeiculoMarca> VeiculosMarca { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -34,6 +35,7 @@ namespace Fipe.Data.Context
             modelBuilder.ApplyConfiguration(new ParametroMap());
             modelBuilder.ApplyConfiguration(new TipoVeiculoMap());
             modelBuilder.ApplyConfiguration(new LogFipeMap());
+            modelBuilder.ApplyConfiguration(new VeiculoMarcaMap());
         }
 
         public async Task SaveChangesListAsync<T>(IEnumerable<T> list) where T : class
