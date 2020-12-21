@@ -8,6 +8,7 @@ using Fipe.Data.Repository;
 using Fipe.Generics.Factory;
 using Fipe.Generics.Factory.Interface;
 using Fipe.Integration;
+using Fipe.Integration.Interfaces;
 using Fipe.Integration.Request;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -44,6 +45,7 @@ namespace Fipe
 
             //Request
             services.AddScoped<IMarcaRequest, MarcaRequest>();
+            services.AddScoped<IVeiculoMarcaRequest, VeiculoMarcaRequest>();
             services.AddTransient<HttpClient>();
 
             //Repository
