@@ -28,5 +28,12 @@ namespace Fipe.Data.Repository
         {
             return await _context.Marcas.Where(expression).ToListAsync();
         }
+
+        public async Task<string> ObterDescricaoTipoVeiculoAsync(int idTipoVeiculo)
+        {
+            return await _context.Marcas.Where(marca => marca.IdTipoVeiculo == idTipoVeiculo)
+                                            .Select(tipoVeiculo => tipoVeiculo.TipoVeiculo.Descricao)
+                                            .FirstOrDefaultAsync();
+        }
     }
 }

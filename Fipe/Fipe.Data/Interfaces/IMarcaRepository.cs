@@ -10,5 +10,6 @@ namespace Fipe.Data.Interfaces
     {
         Task GravarMarcasAsync(IEnumerable<Marca> marcas);
         Task<IEnumerable<Marca>> BuscarMarcasPorMesAnoReferenciaAsync(Expression<Func<Marca, bool>> expression);
+        Task<string> ObterDescricaoTipoVeiculoAsync(int idTipoVeiculo);
     }
 }
