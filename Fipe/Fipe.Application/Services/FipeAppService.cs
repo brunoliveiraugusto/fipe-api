@@ -27,6 +27,7 @@ namespace Fipe.Application.Services
             try
             {
                 await _marcaAppService.PopularMarcasObtidasApiFipeAsync();
+                await _veiculoMarcaAppService.PopularVeiculosMarcaObtidosApiFipeSync();
             }
             catch(Exception ex)
             {
