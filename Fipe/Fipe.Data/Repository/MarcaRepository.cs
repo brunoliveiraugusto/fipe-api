@@ -4,7 +4,8 @@ using Fipe.Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Fipe.Data.Repository
@@ -21,6 +22,11 @@ namespace Fipe.Data.Repository
         public async Task GravarMarcasAsync(IEnumerable<Marca> marcas)
         {
             await _context.SaveChangesListAsync(marcas);
+        }
+
+        public async Task<IEnumerable<Marca>> BuscarMarcasPorMesAnoReferenciaAsync(Expression<Func<Marca, bool>> expression)
+        {
+            return await _context.Marcas.Where(expression).ToListAsync();
         }
     }
 }
