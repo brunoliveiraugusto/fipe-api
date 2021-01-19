@@ -59,7 +59,7 @@ namespace Fipe.Integration.Request
                 }
                 else
                 {
-                    throw new Exception("Erro ao processar a requisição.");
+                    throw new Exception();
                 }
             }
             catch (Exception)
