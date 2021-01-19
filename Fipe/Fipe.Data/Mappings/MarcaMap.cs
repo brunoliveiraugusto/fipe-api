@@ -10,14 +10,16 @@ namespace Fipe.Data.Mappings
         {
             builder.HasKey(k => k.IdMarca);
             builder.Property(p => p.IdMarcaFipe);
-            builder.Property(p => p.IdTipoVeiculo);
             builder.Property(p => p.MesReferencia);
             builder.Property(p => p.Nome);
             builder.Property(p => p.NomeFipe);
             builder.Property(p => p.OrderFipe);
             builder.Property(p => p.Chave);
             builder.Property(p => p.AnoReferencia);
-            builder.Ignore(p => p.TipoVeiculo);
+            builder.HasOne(p => p.TipoVeiculo)
+                .WithMany(x => x.Marcas)
+                .HasForeignKey(p => p.IdTipoVeiculo);
+
             builder.ToTable("Marca");
 
         }
