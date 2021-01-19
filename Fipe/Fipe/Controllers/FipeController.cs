@@ -16,7 +16,7 @@ namespace Fipe.Api.Controllers
         }
 
         /// <summary>
-        /// Api para popular no banco de dados os dados trazidos da Fipe.
+        /// Api para popular no banco de dados as informações de veículos trazidas da tabela Fipe.
         /// </summary>
         /// <response code="200">Indica que os dados foram registrados com sucesso</response>
         [HttpPost]
