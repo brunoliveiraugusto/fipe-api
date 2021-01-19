@@ -7,7 +7,7 @@ namespace Fipe.Application.Interfaces
 {
     public interface IVeiculoMarcaAppService
     {
-        Task PopularVeiculosMarcaObtidosApiFipeSync();
+        Task PopularVeiculosMarcaObtidosApiFipeAsync();
         string ObterTipoVeiculo(string descricao);
     }
 }

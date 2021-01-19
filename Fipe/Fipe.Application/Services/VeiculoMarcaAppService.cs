@@ -29,7 +29,7 @@ namespace Fipe.Application.Services
             _veiculoMarcaRepository = veiculoMarcaRepository;
         }
 
-        public async Task PopularVeiculosMarcaObtidosApiFipeSync()
+        public async Task PopularVeiculosMarcaObtidosApiFipeAsync()
         {
             try
             {
@@ -41,7 +41,7 @@ namespace Fipe.Application.Services
                 {
                     var descricaoTipoVeiculoMarca = await _marcaRepository.ObterDescricaoTipoVeiculoAsync(marca.IdTipoVeiculo);
                     string tipoVeiculo = ObterTipoVeiculo(descricaoTipoVeiculoMarca);
-                    var veiculos = await _veiculoMarcaRequest.ObterVeiculosMarcaFipeApiAsync(urlBaseApiFipe, @"{descricaoTipoVeiculoMarca}/veiculos/{marca.IdMarcaFipe}");
+                    var veiculos = await _veiculoMarcaRequest.ObterVeiculosMarcaFipeApiAsync(urlBaseApiFipe, $"{tipoVeiculo}/veiculos/{marca.IdMarcaFipe}.json");
                     veiculos.ToList().ForEach(veiculo =>
                     {
                         veiculo.IdMarca = marca.IdMarca;
