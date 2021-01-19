@@ -53,6 +53,7 @@ namespace Fipe
             services.AddScoped<ITipoVeiculoRepository, TipoVeiculoRepository>();
             services.AddScoped<IMarcaRepository, MarcaRepository>();
             services.AddScoped<ILogFipeRepository, LogFipeRepository>();
+            services.AddScoped<IVeiculoMarcaRepository, VeiculoMarcaRepository>();
 
             //Generics
             services.AddScoped<IFactory, Factory>();
